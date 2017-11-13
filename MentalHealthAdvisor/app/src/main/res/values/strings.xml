@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Mental Health Advisor</string>
+    <string name="textViewText">Mental Health Problems</string>
+    <string name="buttonText">Bipolar Disorder</string>
+    <string name="textViewText2">Bipolar Disorder</string>
+    <string name="buttonText2">Back</string>
+    <string name="practiceTextView">Bipolar disorder used to be called ‘manic depression’. As the name suggests, it is characterised by episodes of very low mood or depression and/or high mood or mania.
+An episode of very low mood/ depression involves feelings of hopelessness and despair. These types of bipolar symptoms can include:
+Sad, despairing, hopeless feelings
+Loss of interest in food, work, sex and other people
+Difficulty sleeping or over-sleeping
+Chronic aches or pains with no identifiable cause
+A high mood involves feelings of elation. This is also known as mania. These types of bipolar symptoms can include:
+Rapid thoughts and/ or speech
+Impaired judgement
+Over-spending/ buying unnecessary items on impulse
+Unusually high levels of energy and little need for sleep
+Unrealistic beliefs about one’s own abilities
+A mixed mood involves a mixture of the above symptoms. For example, depressed mood with the restlessness and over activity of a manic episode.
+People usually experience both low and high moods, but some will have only high or low episodes.
+Bipolar disorder affects about one in every 100 adults. It can start at any time during or after the teenage years, although it is unusual for it to start after the age of 40. Men and women are affected equally.</string>
+    <string name="button3">Show</string>
+    <string name="checkerButton">Check Self</string>
+    <string name="hideBipolar">Back</string>
+    <string name="panicAttack">Panic Attacks</string>
+    <string name="depressionButton">Depression</string>
+    <string name="copingButton">Ways To Cope</string>
+</resources>
