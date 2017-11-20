@@ -3,4 +3,7 @@
     <string name="mainPageTitle">Message App</string>
     <string name="chatRoomOne">Chat One</string>
     <string name="chatRoomTwo">Chat Two</string>
+    <string name="chatRoomThree">Chat Three</string>
+    <string name="chatRoomTitle">Chat Room</string>
+    <string name="addMessageText">Add Message</string>
 </resources>
