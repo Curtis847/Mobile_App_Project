@@ -6,4 +6,6 @@
     <string name="chatRoomThree">Chat Three</string>
     <string name="chatRoomTitle">Chat Room</string>
     <string name="addMessageText">Add Message</string>
+    <string name="sendMessageBtn">Send</string>
+    <string name="contentDescriptCamera">Goes To Camera</string>
 </resources>

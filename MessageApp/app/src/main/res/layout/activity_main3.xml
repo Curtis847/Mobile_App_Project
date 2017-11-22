@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.message.messageapp.Main2Activity">
+    tools:context="com.app.message.messageapp.Main3Activity">
 
     <TextView
-        android:id="@+id/chatRoomTitleOne"
+        android:id="@+id/chatRoomTitleTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,41 +19,39 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-
     <EditText
-        android:id="@+id/addMessageOne"
+        android:id="@+id/addMessageTwo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="400dp"
+        android:editable="true"
         android:ems="10"
-        android:inputType="textLongMessage"
+        android:inputType="textPersonName"
         android:text="@string/addMessageText" />
 
-    <Button
-        android:id="@+id/sendMessageBtn"
+    <ImageButton
+        android:id="@+id/goToCameraBtnTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageOne"
+        android:layout_alignTop="@+id/addMessageTwo"
+        android:layout_below="@+id/addMessageTwo"
         android:layout_marginTop="80dp"
-        android:layout_toLeftOf="@id/chatRoomTitleOne"
-        android:layout_toStartOf="@id/chatRoomTitleOne"
+        android:layout_toEndOf="@+id/chatRoomTitleTwo"
+        android:layout_toRightOf="@+id/chatRoomTitleTwo"
+        app:srcCompat="@drawable/camera_image" />
+
+    <Button
+        android:id="@+id/sendMessageBtnTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/addMessageTwo"
+        android:layout_marginTop="80dp"
+        android:layout_toLeftOf="@id/chatRoomTitleTwo"
+        android:layout_toStartOf="@id/chatRoomTitleTwo"
         android:text="@string/sendMessageBtn"
         android:textSize="24sp"
         android:textStyle="bold" />
-
-    <ImageButton
-        android:id="@+id/goToCameraBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageOne"
-        android:layout_below="@+id/addMessageOne"
-        android:layout_marginTop="80dp"
-        android:layout_toEndOf="@+id/chatRoomTitleOne"
-        android:layout_toRightOf="@+id/chatRoomTitleOne"
-        android:contentDescription="@string/contentDescriptCamera"
-        app:srcCompat="@drawable/camera_image" />
-
 
 </RelativeLayout>
