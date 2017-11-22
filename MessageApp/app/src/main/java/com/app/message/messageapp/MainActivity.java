@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button chatRoom = (Button)findViewById(R.id.chatButton);
         Button chatRoomTwo = (Button)findViewById(R.id.chatButtonTwo);
+        Button chatRoomThree = (Button)findViewById(R.id.chatButtonThree);
 
         chatRoom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (getApplicationContext(),Main3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        chatRoomThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(),Main4Activity.class);
                 startActivity(intent);
             }
         });
