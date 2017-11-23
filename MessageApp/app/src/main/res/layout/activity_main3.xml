@@ -26,10 +26,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="400dp"
-        android:editable="true"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/addMessageText" />
+        android:hint="@string/addMessageText" />
 
     <ImageButton
         android:id="@+id/goToCameraBtnTwo"
@@ -40,6 +39,7 @@
         android:layout_marginTop="80dp"
         android:layout_toEndOf="@+id/chatRoomTitleTwo"
         android:layout_toRightOf="@+id/chatRoomTitleTwo"
+        android:contentDescription="@string/contentDescriptCamera"
         app:srcCompat="@drawable/camera_image" />
 
     <Button

@@ -25,10 +25,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="400dp"
-        android:editable="true"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/addMessageText" />
+        android:hint="@string/addMessageText" />
 
     <Button
         android:id="@+id/sendMessageBtnThree"
@@ -40,7 +39,8 @@
         android:layout_toStartOf="@id/chatRoomTitleThree"
         android:text="@string/sendMessageBtn"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="RelativeOverlap" />
 
     <ImageButton
         android:id="@+id/goToCameraBtnThree"
@@ -51,6 +51,7 @@
         android:layout_marginTop="80dp"
         android:layout_toEndOf="@+id/chatRoomTitleThree"
         android:layout_toRightOf="@+id/chatRoomTitleThree"
+        android:contentDescription="@string/contentDescriptCamera"
         app:srcCompat="@drawable/camera_image" />
 
 </RelativeLayout>

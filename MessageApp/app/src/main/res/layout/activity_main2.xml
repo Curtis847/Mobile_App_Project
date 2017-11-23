@@ -29,7 +29,7 @@
         android:layout_marginTop="400dp"
         android:ems="10"
         android:inputType="textLongMessage"
-        android:text="@string/addMessageText" />
+        android:hint="@string/addMessageText" />
 
     <Button
         android:id="@+id/sendMessageBtn"

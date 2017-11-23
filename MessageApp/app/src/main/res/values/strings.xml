@@ -8,4 +8,5 @@
     <string name="addMessageText">Add Message</string>
     <string name="sendMessageBtn">Send</string>
     <string name="contentDescriptCamera">Goes To Camera</string>
+    <string name="splashScreenText">Splash Screen</string>
 </resources>
