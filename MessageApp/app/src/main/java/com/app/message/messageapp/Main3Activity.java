@@ -6,6 +6,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -28,6 +29,7 @@ public class Main3Activity extends AppCompatActivity {
                 startActivityForResult(iCamera, REQUEST_CODE_IMAGE_CAPTURE);
             }
         });
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
 

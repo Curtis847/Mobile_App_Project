@@ -24,4 +24,7 @@
         completions."
     </string>
     <string name="signOutBtn">Sign Out</string>
+    <string name="chatRoomTitleTwo">Chat Room Two</string>
+    <string name="chatRoomTitleThree">Chat Room Three</string>
+    <string name="messageOutputTitle">Messages Output</string>
 </resources>
