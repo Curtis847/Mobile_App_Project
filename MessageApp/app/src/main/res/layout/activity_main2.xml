@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.app.message.messageapp.Main2Activity">
@@ -17,76 +18,49 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
-
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/chatRoomTitleOne"
-        android:layout_below="@+id/chatRoomTitleOne"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="200dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@android:color/holo_purple"
-        android:backgroundTint="@color/cardview_light_background">
+        android:layout_above="@+id/linearLayout"
+        android:id="@+id/messageRec">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp">
+    </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/messageOutputTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp"
-                android:text="@string/messageOutputTitle"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-        </android.support.v7.widget.CardView>
-    </ScrollView>
-
-
-    <EditText
-        android:id="@+id/addMessageOne"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="450dp"
-        android:ems="10"
-        android:inputType="textLongMessage"
-        android:hint="@string/addMessageText" />
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
 
-    <Button
-        android:id="@+id/sendMessageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageOne"
-        android:layout_marginTop="80dp"
-        android:layout_toLeftOf="@id/chatRoomTitleOne"
-        android:layout_toStartOf="@id/chatRoomTitleOne"
-        android:text="@string/sendMessageBtn"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/addMessageOne"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/addMessageText" />
 
-    <ImageButton
-        android:id="@+id/goToCameraBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageOne"
-        android:layout_below="@+id/addMessageOne"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginStart="170dp"
-        android:layout_toEndOf="@+id/sendMessageBtn"
-        android:layout_toRightOf="@+id/sendMessageBtn"
-        android:contentDescription="@string/contentDescriptCamera"
-        app:srcCompat="@drawable/camera_image" />
+        <Button
+            android:id="@+id/sendMessageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sendMessageBtn"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:onClick="sendButtonClicked"/>
+
+        <ImageButton
+            android:id="@+id/goToCameraBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/addMessageOne"
+            android:layout_below="@+id/addMessageOne"
+            android:layout_toEndOf="@+id/sendMessageBtn"
+            android:layout_toRightOf="@+id/sendMessageBtn"
+            android:contentDescription="@string/contentDescriptCamera"
+            app:srcCompat="@drawable/camera_image" />
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>

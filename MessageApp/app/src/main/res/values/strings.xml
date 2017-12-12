@@ -27,4 +27,7 @@
     <string name="chatRoomTitleTwo">Chat Room Two</string>
     <string name="chatRoomTitleThree">Chat Room Three</string>
     <string name="messageOutputTitle">Messages Output</string>
+    <string name="senderName">Curtis</string>
+    <string name="messageText">Hello Friends</string>
+    <string name="timeStamp">9:15pm</string>
 </resources>
