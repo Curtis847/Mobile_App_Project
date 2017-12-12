@@ -17,75 +17,47 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
-
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/chatRoomTitleTwo"
-        android:layout_below="@+id/chatRoomTitleTwo"
-        android:isScrollContainer="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="200dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@android:color/holo_purple"
-        android:backgroundTint="@color/cardview_light_background">
+        android:layout_above="@+id/linearLayoutTwo"
+        android:layout_below="@id/chatRoomTitleTwo"
+        android:id="@+id/messageRecTwo">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardViewTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp">
+    </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/messageOutputTitleTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginStart="80dp"
-                android:text="@string/messageOutputTitle"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-        </android.support.v7.widget.CardView>
-    </ScrollView>
-
-    <EditText
-        android:id="@+id/addMessageTwo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="450dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/addMessageText" />
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayoutTwo">
 
-    <ImageButton
-        android:id="@+id/goToCameraBtnTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageTwo"
-        android:layout_below="@+id/addMessageTwo"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginStart="170dp"
-        android:layout_toEndOf="@+id/sendMessageBtnTwo"
-        android:layout_toRightOf="@+id/sendMessageBtnTwo"
-        android:contentDescription="@string/contentDescriptCamera"
-        app:srcCompat="@drawable/camera_image" />
+        <EditText
+            android:id="@+id/addMessageTwo"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/addMessageText" />
 
-    <Button
-        android:id="@+id/sendMessageBtnTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/addMessageTwo"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:text="@string/sendMessageBtn"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/sendMessageBtnTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sendMessageBtn"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:onClick="sendButtonClicked"/>
+
+        <ImageButton
+            android:id="@+id/goToCameraBtnTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/addMessageTwo"
+            android:layout_below="@+id/addMessageTwo"
+            android:layout_toEndOf="@+id/sendMessageBtnTwo"
+            android:layout_toRightOf="@+id/sendMessageBtnTwo"
+            android:contentDescription="@string/contentDescriptCamera"
+            app:srcCompat="@drawable/camera_image" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayout"
+        android:layout_below="@id/chatRoomTitleOne"
         android:id="@+id/messageRec">
 
     </android.support.v7.widget.RecyclerView>

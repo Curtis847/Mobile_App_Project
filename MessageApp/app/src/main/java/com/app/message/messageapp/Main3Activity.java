@@ -1,24 +1,48 @@
 package com.app.message.messageapp;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class Main3Activity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_IMAGE_CAPTURE = 100;
     ImageView ivImage;
 
+    private EditText editMessage;
+    private DatabaseReference mDatabase;
+    private RecyclerView mMessageList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+        editMessage = (EditText) findViewById(R.id.addMessageTwo);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("MessagesTwo");
+        mMessageList = (RecyclerView) findViewById(R.id.messageRecTwo);
+        mMessageList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        mMessageList.setLayoutManager(linearLayoutManager);
 
         ImageButton cameraBtnTwo = (ImageButton) findViewById(R.id.goToCameraBtnTwo);
         cameraBtnTwo.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +55,73 @@ public class Main3Activity extends AppCompatActivity {
         });
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+    }
+
+    public void sendButtonClicked(View view) {
+        final String messageValue = editMessage.getText().toString().trim();
+        if (!TextUtils.isEmpty(messageValue)) {
+            final DatabaseReference newPost = mDatabase.push();
+            newPost.child("content").setValue(messageValue);
+        }
+    }
+
+    Query query = FirebaseDatabase.getInstance()
+            .getReference()
+            .child("MessagesTwo")
+            .limitToLast(50);
+
+
+
+
+
+    FirebaseRecyclerOptions<Message> options =
+            new FirebaseRecyclerOptions.Builder<Message>()
+                    .setQuery(query, Message.class)
+                    .build();
+
+    FirebaseRecyclerAdapter FBRA = new FirebaseRecyclerAdapter<Message, Main3Activity.MessageViewHolder>(options) {
+
+        @Override
+        public Main3Activity.MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.message_layout, parent, false);
+
+            return new Main3Activity.MessageViewHolder(view);
+        }
+        @Override
+        protected void onBindViewHolder(Main3Activity.MessageViewHolder holder, int position, Message model) {
+            holder.setContent(model.getContent());
+        }
+
+    };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FBRA.startListening();
+
+        mMessageList.setAdapter(FBRA);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FBRA.stopListening();
+    }
+
+    public static class MessageViewHolder extends RecyclerView.ViewHolder {
+
+        View mView;
+        public MessageViewHolder(View itemView) {
+            super(itemView);
+            mView = itemView;
+        }
+
+        public void setContent(String content) {
+            TextView message_content = (TextView) mView.findViewById(R.id.messageText);
+            message_content.setText(content);
+        }
     }
 
     private void captureImage() {
