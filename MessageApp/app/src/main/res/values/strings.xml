@@ -30,4 +30,7 @@
     <string name="senderName">Curtis</string>
     <string name="messageText">Hello Friends</string>
     <string name="timeStamp">9:15pm</string>
+    <string name="default_image">Default Image</string>
+    <string name="camera_photo">Camera Photo</string>
+    <string name="splashScreenDescript">Strawberry Logo</string>
 </resources>

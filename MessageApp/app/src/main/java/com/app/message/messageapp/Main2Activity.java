@@ -1,7 +1,13 @@
 package com.app.message.messageapp;
 
+import android.*;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -24,8 +31,11 @@ import com.google.firebase.database.Query;
 
 public class Main2Activity extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_IMAGE_CAPTURE = 100;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_IMAGE_GET = 2;
+    static final int MY_PERMISSIONS_REQUEST_CAMERA = 3;
     ImageView ivImage;
+    TextView tvImageText;
 
     private EditText editMessage;
     private DatabaseReference mDatabase;
@@ -44,16 +54,83 @@ public class Main2Activity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         mMessageList.setLayoutManager(linearLayoutManager);
 
+        ivImage = (ImageView) findViewById(R.id.imageView);
+
+        tvImageText = (TextView) findViewById(R.id.textView);
+
         ImageButton cameraBtn = (ImageButton) findViewById(R.id.goToCameraBtn);
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                captureImage();
-                Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(iCamera, REQUEST_CODE_IMAGE_CAPTURE);
+                takePicture();
             }
         });
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ivImage.setImageBitmap(imageBitmap);
+            tvImageText.setText("Image captured by Camera");
+        }
+        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+            //Bitmap thumbnail = data.getParceable("data");
+            // Uri fullPhotoUri = data.getData();
+            // Do work with photo saved at fullPhotoUri
+            try {
+                Uri imageUri = data.getData();
+                Bitmap thumbnail = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                ivImage.setImageBitmap(thumbnail);
+                tvImageText.setText("Image picked from Gallery");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(),"Exception: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void cameraIntentCode() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    private void galleryIntentCode() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_GET);
+        }
+    }
+
+    private void takePicture() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            cameraIntentCode();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted
+                    cameraIntentCode();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Permission denied",Toast.LENGTH_SHORT).show();
+                    // permission deniedDisable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
     }
 
     public void sendButtonClicked(View view) {
@@ -123,22 +200,5 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-    private void captureImage() {
-        cameraImplicitIntent();
-    }
 
-    private void cameraImplicitIntent() {
-        Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(iCamera, REQUEST_CODE_IMAGE_CAPTURE);
-    }
-
-    /*@Override
-    protected void onACctivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Toast.makeText(getApplicationContext(), "Result Back from Camera App", Toast.LENGTH_SHORT).show();
-            Bundle bundle = data.getExtras();
-            Bitmap bitmapImage = (Bitmap) bundle.get("data");
-        }
-    }*/
 }
