@@ -1,7 +1,6 @@
 package com.app.message.messageapp;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         chatRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
+                Intent intent = new Intent(getApplicationContext(),FirstChatActivity.class);
                 startActivity(intent);
             }
         });

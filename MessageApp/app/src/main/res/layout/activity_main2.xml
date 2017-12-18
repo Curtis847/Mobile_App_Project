@@ -5,7 +5,7 @@
     android:id="@+id/activity_main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.message.messageapp.Main2Activity">
+    tools:context="com.app.message.messageapp.FirstChatActivity">
 
     <TextView
         android:id="@+id/chatRoomTitleOne"
@@ -79,6 +79,14 @@
         android:text="@string/default_image"
         android:textSize="20sp" />
 
+    <ImageButton
+        android:id="@+id/chooseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_toLeftOf="@+id/chatRoomTitleOne"
+        android:layout_toStartOf="@+id/chatRoomTitleOne"
+        android:src="@android:drawable/ic_input_add" />
 
 
 </RelativeLayout>
